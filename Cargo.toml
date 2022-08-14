@@ -1,0 +1,25 @@
+[package]
+name = "rust_agent"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[profile.dev]
+panic = 'abort'
+
+
+[profile.release]
+opt-level="z"
+strip = true
+lto = true
+codegen-units  =  1
+debug = 0
+
+
+[dependencies]
+reqwest = {version = "0.11.11", features = ["json"]}
+serde_json = "1.0.81"
+serde = {version = "1.0.137", features = ["derive"] }
+tokio-tun = {version = "0.5.3"}
+tokio = { version = "1.19.2", features = ["full"] }
